@@ -27,3 +27,20 @@ This course introduces fundamental data structures and algorithms for undergradu
 
 
 This repository contains my learning notes and assignments for CS203A.
+## Syllabus
+Noted: Students are required to read the syllabus carefully. Please be aware that the course schedule may be adjusted depending on the study progress.
+
+## Assignments
+Assignments will be periodically provided to reinforce the concepts covered in class. These may include programming tasks, problem-solving exercises, and written reports. Submission deadlines will be strictly enforced. Refer to the Assignment Guidelines for details.
+
+## Quizzes
+Quizzes will be conducted periodically to assess students' understanding of the course material. These quizzes may include multiple-choice questions, short answers, and coding problems. They are designed to encourage consistent study habits and reinforce key concepts. Refer to the Quiz Guidelines for details on format, schedule, and grading policies.
+
+## Practice Problems
+Practice problems will be made available to help students gain hands-on experience with data structures and algorithms. These exercises are designed to prepare students for exams and practical applications. You may copy the code to your own course repository for practice. Refer to the Practice Problems for more information.
+
+## Study Note
+Study notes will be shared to help students consolidate their understanding of the course material. These notes will include summaries of key concepts, example problems, and tips for tackling common challenges. Students are encouraged to review these notes regularly. Refer to the Study Notes for detailed content.
+
+## Utility
+Utility scripts and tools will be provided to assist students in completing assignments and understanding course materials. These utilities include code snippets, debugging aids, and performance analysis tools. Refer to the Utility Tools for more information.
