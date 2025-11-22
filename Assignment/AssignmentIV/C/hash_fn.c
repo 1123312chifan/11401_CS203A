@@ -16,12 +16,27 @@
 #include "hash_fn.h"
 
 int myHashInt(int key, int m) {
-    // TODO: replace with your own design
-    return key % m;  // division method example
+    
+        /* normalize to non-negative index in [0, m-1] */
+        if (m <= 0) return 0; /* defensive: avoid division by zero */
+        int idx = key % m;
+        if (idx < 0) idx += m;
+        return idx;  /* division method (normalized) */
 }
 
 int myHashString(const char* str, int m) {
-    unsigned long hash = 0;
-    // TODO: replace with your own design
-    return (int)(hash % m); // basic division method
+    if (m <= 0) return 0; /* defensive: avoid modulo by zero */
+
+        /*
+         * djb2 string hash
+         * Reference: http://www.cse.yorku.ca/~oz/hash.html
+         */
+        unsigned long hash = 5381UL;
+        unsigned char c;
+        while ((c = (unsigned char)*str++) != 0) {
+            /* hash * 33 + c */
+            hash = ((hash << 5) + hash) + c;
+        }
+
+        return (int)(hash % (unsigned long)m);
 }
