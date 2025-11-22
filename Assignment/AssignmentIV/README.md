@@ -102,7 +102,7 @@ Email: s1123312@mail.yzu.edu.tw
 ### Manual Compilation (if needed)
 - Command for C:
   ```bash
-  g++ -std=c++17 -O2 -Wall -Wextra -o main_c.exe main.c hash_fn.c
+  gcc -o hash_obs main.c hash_fn.c
   ```
 - Command for C++:
   ```bash
@@ -118,7 +118,7 @@ Email: s1123312@mail.yzu.edu.tw
 ### Execution
 - Run the compiled binary:
   ```bash
-  ./main_c.exe
+  ./hash_obs
   ```
   or
   ```bash
