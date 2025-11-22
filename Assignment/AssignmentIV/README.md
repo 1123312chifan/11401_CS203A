@@ -7,6 +7,8 @@ evaluate their efficiency, and understand their applications in computer science
 Developer: 劉季帆  
 Email: s1123312@mail.yzu.edu.tw  
 
+使用Linux
+
 ## My Hash Function
 ### Integer Keys 
 - Formula / pseudocode:
@@ -100,11 +102,11 @@ Email: s1123312@mail.yzu.edu.tw
 ### Manual Compilation (if needed)
 - Command for C:
   ```bash
-  gcc -std=c23 -Wall -Wextra -Wpedantic -g -o C/hash_function C/main.c C/hash_fn.c
+  g++ -std=c++17 -O2 -Wall -Wextra -o main_c.exe main.c hash_fn.c
   ```
 - Command for C++:
   ```bash
-  g++ -std=c++23 -Wall -Wextra -Wpedantic -g -o CXX/hash_function_cpp CXX/main.cpp CXX/hash_fn.cpp
+  g++ -std=c++17 -O2 -Wall -Wextra -o main.exe main.cpp hash_fn.cpp
   ```
 
 ### Clean Build Files
@@ -116,7 +118,7 @@ Email: s1123312@mail.yzu.edu.tw
 ### Execution
 - Run the compiled binary:
   ```bash
-  ./hash_function
+  ./main_c.exe
   ```
   or
   ```bash
