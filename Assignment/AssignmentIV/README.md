@@ -102,11 +102,11 @@ Email: s1123312@mail.yzu.edu.tw
 ### Manual Compilation (if needed)
 - Command for C:
   ```bash
-  gcc -std=c23 -Wall -Wextra -Wpedantic -g -o C/hash_function C/main.c C/hash_fn.c
+  gcc -std=c2x -Wall -Wextra -Wpedantic -g -o C/hash_function C/main.c C/hash_fn.c
   ```
 - Command for C++:
   ```bash
-  g++ -std=c++23 -Wall -Wextra -Wpedantic -g -o CXX/hash_function_cpp CXX/main.cpp CXX/hash_fn.cpp
+  g++ -std=c++2x -Wall -Wextra -Wpedantic -g -o CXX/hash_function_cpp CXX/main.cpp CXX/hash_fn.cpp
   ```
 
 ### Clean Build Files
