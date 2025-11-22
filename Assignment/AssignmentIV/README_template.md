@@ -11,14 +11,59 @@ Email: s1123312@mail.yzu.edu.tw
 ### Integer Keys 
 - Formula / pseudocode:
   ```text
-  [Your implementation here]
+  //c
+  int myHashInt(int key, int m) {
+    
+        /* normalize to non-negative index in [0, m-1] */
+        if (m <= 0) return 0; /* defensive: avoid division by zero */
+        int idx = key % m;
+        if (idx < 0) idx += m;
+        return idx;  /* division method (normalized) */
+  }
+  //c++
+  int myHashInt(int key, int m) {
+      if (m <= 0) return 0;
+      unsigned int x = static_cast<unsigned int>(key);
+      // Multiplicative hashing (Knuth) using a large odd constant
+      const unsigned int A = 2654435769u; // 2^32 * (sqrt(5)-1)/2
+      unsigned int mixed = x * A;
+      return static_cast<int>(mixed % static_cast<unsigned int>(m));
+  }
+
   ```
 - Rationale: [Explain your design choices and how they minimize collisions.]
 
 ### Non-integer Keys
 - Formula / pseudocode:
   ```text
-  [Your implementation here]
+  //c
+  int myHashString(const char* str, int m) {
+    if (m <= 0) return 0; /* defensive: avoid modulo by zero */
+
+        /*
+         * djb2 string hash
+         * Reference: http://www.cse.yorku.ca/~oz/hash.html
+         */
+        unsigned long hash = 5381UL;
+        unsigned char c;
+        while ((c = (unsigned char)*str++) != 0) {
+            /* hash * 33 + c */
+            hash = ((hash << 5) + hash) + c;
+        }
+
+        return (int)(hash % (unsigned long)m);
+  }
+  //c++
+  int myHashString(const std::string& str, int m) {
+    if (m <= 0) return 0;
+    // DJB2 hash: simple, fast, good distribution for short strings
+    unsigned long hash = 5381ul;
+    for (unsigned char c : str) {
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    }
+    return static_cast<int>(hash % static_cast<unsigned long>(m));
+  }
+
   ```
 - Rationale: [Explain your approach and its effectiveness for non-integer keys.]
 
