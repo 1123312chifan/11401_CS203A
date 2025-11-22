@@ -102,11 +102,11 @@ Email: s1123312@mail.yzu.edu.tw
 ### Manual Compilation (if needed)
 - Command for C:
   ```bash
-  gcc -o hash_obs main.c hash_fn.c
+  gcc -std=c23 -Wall -Wextra -Wpedantic -g -o C/hash_function C/main.c C/hash_fn.c
   ```
 - Command for C++:
   ```bash
-  g++ -std=c++17 -O2 -Wall -Wextra -o main.exe main.cpp hash_fn.cpp
+  g++ -std=c++23 -Wall -Wextra -Wpedantic -g -o CXX/hash_function_cpp CXX/main.cpp CXX/hash_fn.cpp
   ```
 
 ### Clean Build Files
@@ -118,7 +118,7 @@ Email: s1123312@mail.yzu.edu.tw
 ### Execution
 - Run the compiled binary:
   ```bash
-  ./hash_obs
+  ./hash_function
   ```
   or
   ```bash
@@ -207,24 +207,50 @@ Email: s1123312@mail.yzu.edu.tw
   === Table Size m = 10 ===
   Key     Index
   -----------------
-  21      1
-  22      2
-  ...
+  21      7
+  22      0
+  23      3
+  24      2
+  25      5
+  26      8
+  27      7
+  28      0
+  29      9
+  30      2
+  51      3
+  52      6
+  53      5
+  54      8
+  55      7
+  56      0
+  57      3
+  58      2
+  59      5
+  60      8
 
   === Table Size m = 11 ===
   Key     Index
   -----------------
-  21      10
-  22      0
-  ...
-
-  === Table Size m = 37 ===
-  Key     Index
-  -----------------
-  21      21
-  22      22
-  ...
-  ```
+  21      0
+  22      3
+  23      6
+  24      2
+  25      5
+  26      8
+  27      4
+  28      7
+  29      3
+  30      6
+  51      2
+  52      5
+  53      1
+  54      4
+  55      0
+  56      3
+  57      6
+  58      2
+  59      5
+  60      8
 
 - Example output for strings:
   ```
@@ -287,10 +313,16 @@ Email: s1123312@mail.yzu.edu.tw
 - Observations: Outputs align with the analysis, showing better distribution with prime table sizes.
 
 ## Analysis
-- Prime vs non-prime `m`: Prime table sizes generally result in better distribution and fewer collisions.
-- Patterns or collisions: Non-prime table sizes tend to produce repetitive patterns, leading to more collisions.
-- Improvements: Use a prime table size and a well-designed hash function to enhance distribution.
+-Prime vs non-prime m
+在本次實驗中，我們比較了m=10(合數)和m=11(質數) 的雜湊結果。儘管在m=10和m=11兩種情況下，測試數據集21到30和51到60都發生了6組衝突，但兩者在衝突的分佈模式上仍存在顯著差異。
+m=10 (合數)： 衝突主要發生在那些個位數相同或相近的鍵值之間。這種高度的依賴性顯示雜湊函數\text{Hash}(k)=k\pmod{10}未能有效利用鍵值的全部資訊。更嚴重的是，對於間隔為10的鍵值，如(27, 37, 57)，它們將必然碰撞，顯示出糟糕的散佈模式。
+m=11 (質數)： 儘管衝突數量相同，但在m=11時，衝突的分佈看起來更隨機，不易從鍵值本身直接看出規律。質數m=11的選擇，讓雜湊函數k\pmod{11}能更充分地將鍵值的分佈打亂，提供了更好的Avalanche Effect，使得鍵值微小的變化能導致雜湊索引的大幅變化，這對減少特定模式的輸入導致的系統性衝突非常重要。
 
+-Patterns or collisions
+雜湊表大小(m)具體衝突模式10鍵值k和k+10產生碰撞的機率極高。例如：27,55碰撞於索引7。-28和56碰撞於索引0。這種模式表明雜湊函數在m=10時，輸出的隨機性較低。11衝突雖然存在，但沒有明顯的規律將鍵值k與k+10或其他固定間隔的鍵值聯繫起來。例如，雖然22和29都碰撞到索引3，但它們的間隔7並不是11的倍數，這顯示m=11有效地打破了輸入數據的規律性。
+
+-Improvements
+確保m為質數： 繼續使用 m=11或m=37這樣的質數作為雜湊表大小，以維持良好的分佈特性。優化雜湊函數： 對於m=10時產生的嚴重碰撞，考慮在 \text{Hash}(k)中引入乘法或位元操作（例如 \text{Hash}(k) = (k \times A + B) \pmod m），使得中間結果能更充分地混合鍵值的各個位元，而不僅僅依賴於k的末數位。
 ## Reflection
 1. Designing hash functions requires balancing simplicity and effectiveness to minimize collisions.
 2. Table size significantly impacts the uniformity of the hash distribution, with prime sizes performing better.
