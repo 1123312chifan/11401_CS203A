@@ -15,12 +15,20 @@
 #include "hash_fn.hpp"
 
 int myHashInt(int key, int m) {
-    // TODO: replace with your own design
-    return key % m;  // basic division method
+    if (m <= 0) return 0;
+    unsigned int x = static_cast<unsigned int>(key);
+    // Multiplicative hashing (Knuth) using a large odd constant
+    const unsigned int A = 2654435769u; // 2^32 * (sqrt(5)-1)/2
+    unsigned int mixed = x * A;
+    return static_cast<int>(mixed % static_cast<unsigned int>(m));
 }
 
 int myHashString(const std::string& str, int m) {
-    unsigned long hash = 0;
-    // TODO: replace with your own design
-    return static_cast<int>(hash % m);  // basic division method
+    if (m <= 0) return 0;
+    // DJB2 hash: simple, fast, good distribution for short strings
+    unsigned long hash = 5381ul;
+    for (unsigned char c : str) {
+        hash = ((hash << 5) + hash) + c; // hash * 33 + c
+    }
+    return static_cast<int>(hash % static_cast<unsigned long>(m));
 }
