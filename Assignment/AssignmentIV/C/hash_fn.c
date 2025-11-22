@@ -13,6 +13,7 @@
    Developer: Yu-Feng Huang <yfhuang@saturn.yzu.edu.tw>
  */
 
+ //use Linux
 #include "hash_fn.h"
 
 int myHashInt(int key, int m) {
