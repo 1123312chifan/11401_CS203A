@@ -1,4 +1,4 @@
-# Homework Assignment IV: Hash Function Design & Observation (C/C++ Version)
+  # Homework Assignment IV: Hash Function Design & Observation (C/C++ Version)
 
 This assignment focuses on the design and observation of hash functions using C/C++. 
 Students are expected to implement and analyze the behavior of hash functions, 
@@ -135,21 +135,72 @@ Email: s1123312@mail.yzu.edu.tw
   -----------------
   21      1
   22      2
-  ...
+  23      3
+  24      4
+  25      5
+  26      6
+  27      7
+  28      8
+  29      9
+  30      0
+  51      1
+  52      2
+  53      3  
+  54      4
+  55      5
+  56      6
+  57      7
+  58      8
+  59      9
+  60      0
 
   === Table Size m = 11 ===
   Key     Index
   -----------------
   21      10
   22      0
-  ...
+  23      1
+  24      2
+  25      3
+  26      4
+  27      5
+  28      6
+  29      7
+  30      8
+  51      7
+  52      8
+  53      9
+  54      10
+  55      0
+  56      1
+  57      2
+  58      3
+  59      4
+  60      5
 
   === Table Size m = 37 ===
   Key     Index
   -----------------
   21      21
   22      22
-  ...
+  23      23
+  24      24
+  25      25
+  26      26
+  27      27
+  28      28
+  29      29
+  30      30
+  51      14
+  52      15
+  53      16
+  54      17
+  55      18
+  56      19
+  57      20
+  58      21
+  59      22
+  60      23
 
   === Hash Function Observation (C++ Version) ===
 
@@ -180,23 +231,44 @@ Email: s1123312@mail.yzu.edu.tw
   === String Hash (m = 10) ===
   Key     Index
   -----------------
-  cat     0
-  dog     0
-  ...
+  cat     5
+  dog     3
+  bat     6
+  cow     0
+  ant     6
+  owl     1
+  bee     3
+  hen     6
+  pig     3
+  fox     8
 
   === String Hash (m = 11) ===
   Key     Index
   -----------------
-  cat     0
-  dog     0
-  ...
+  cat     6
+  dog     4
+  bat     6
+  cow     9
+  ant     6
+  owl     9
+  bee     2
+  hen     0
+  pig     4
+  fox     10
 
   === String Hash (m = 37) ===
   Key     Index
   -----------------
-  cat     0
-  dog     0
-  ...
+  cat     29
+  dog     13
+  bat     13
+  cow     13
+  ant     19
+  owl     14
+  bee     19
+  hen     13
+  pig     7
+  fox     25
   ```
 
 - Observations: Outputs align with the analysis, showing better distribution with prime table sizes.
