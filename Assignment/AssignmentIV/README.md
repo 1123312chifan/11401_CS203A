@@ -322,7 +322,7 @@ m=11 (質數)： 儘管衝突數量相同，但在m=11時，衝突的分佈看�
 雜湊表大小(m)具體衝突模式10鍵值k和k+10產生碰撞的機率極高。例如：27,55碰撞於索引7。-28和56碰撞於索引0。這種模式表明雜湊函數在m=10時，輸出的隨機性較低。11衝突雖然存在，但沒有明顯的規律將鍵值k與k+10或其他固定間隔的鍵值聯繫起來。例如，雖然22和29都碰撞到索引3，但它們的間隔7並不是11的倍數，這顯示m=11有效地打破了輸入數據的規律性。
 
 -Improvements
-確保m為質數： 繼續使用 m=11或m=37這樣的質數作為雜湊表大小，以維持良好的分佈特性。優化雜湊函數： 對於m=10時產生的嚴重碰撞，考慮在 \text{Hash}(k)中引入乘法或位元操作（例如 \text{Hash}(k) = (k \times A + B) \pmod m），使得中間結果能更充分地混合鍵值的各個位元，而不僅僅依賴於k的末數位。
+確保m為質數： 繼續使用 m=11或m=37這樣的質數作為雜湊表大小，以維持良好的分佈特性。優化雜湊函數： 對於m=10時產生的嚴重碰撞，考慮在 \text{Hash}(k)中引入乘法或位元操作，使得中間結果能更充分地混合鍵值的各個位元，而不僅僅依賴於k的末數位。
 ## Reflection
 1. Designing hash functions requires balancing simplicity and effectiveness to minimize collisions.
 2. Table size significantly impacts the uniformity of the hash distribution, with prime sizes performing better.
